@@ -1,0 +1,23 @@
+.form-div{
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    background:linear-gradient(35deg, #3432bb,rgba(119, 119, 255, 0.8));
+    height: 40vh;
+    width:50%;
+    margin-left: 20%;
+    margin-top: 10%;
+    padding: 20px;
+    }
+    form{
+        margin-top: 10%;
+    }
+    .set-but{
+        background:transparent;
+        border:none;
+        border-radius:0px;
+        border-bottom:1px solid white;
+    }
+    .set-but:focus{
+        outline: 0;
+    }

@@ -1,0 +1,72 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-image: url(../images/back2.gif);
+  background-size: cover;
+  background-repeat: none;
+  
+}
+
+/* .form-container{
+  position: relative;
+   /* top: 5vh ; 
+  background:rgb(245, 222, 179);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px #000;
+  
+} */
+
+
+h5{
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 60px;
+}
+.p{
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+.carousel-item{
+    height: 90vh;
+    min-height: 300px;
+    background:no-repeat scroll center scroll;
+    -webkit-background-size:cover;
+    background-size: cover;
+}
+
+.carousel-item::before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0.7;
+}
+.carousel-inner{
+  width:50vw;
+  position: relative;
+  right: 12px;
+}
+.img{
+  height: 90vh;
+}
+.carousel-caption {
+  bottom: 10%;
+}
+p{
+    font-family: sans-serif;
+}
+span{
+  position:absolute;
+  right:15px;
+  transform: translate(0,-50%);
+  top:50%
+}
