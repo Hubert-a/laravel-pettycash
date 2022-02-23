@@ -21,15 +21,18 @@ use App\Http\Controllers\LoginController;
 // Route::get('/login', function () {
 //     return view('auth.login');
 // });
-route::get('/home',[HomeController::class, 'index'])->name('home');
+// route::get('/home',[HomeController::class, 'index'])->name('home');
 
-route::get('/topup',[TopupController::class, 'index'])->name('topup');
-route::post('/topup',[TopupController::class, 'store']);
+// route::get('/topup',[TopupController::class, 'index'])->name('topup');
+// route::post('/topup',[TopupController::class, 'store']);
 
 route::get('/login',[LoginController::class, 'index'])->name('login');
-route::post('/login',[LoginController::class, 'store']);  
+// // route::post('/login',[LoginController::class, 'store']);  
 
-route::get('/logout',[LogoutController::class, 'logout'])->name('logout');
+// route::get('/logout',[LogoutController::class, 'logout'])->name('logout');
 
-route::get('/register',[RegisterController::class, 'index'])->name('register');
-route::post('/register',[RegisterController::class, 'store']);  
+// route::get('/register',[RegisterController::class, 'index'])->name('register');
+// route::post('/register',[RegisterController::class, 'store']);  
+
+// Route::post('userlogin',[LoginController::class, 'user_login']);
+    

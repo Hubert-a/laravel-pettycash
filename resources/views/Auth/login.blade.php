@@ -48,7 +48,7 @@
                  {{session('status')}}
                </div>
               @endif
-            <form action="" method="POST" class="form-container">
+            <form action="" id="loginform" method="POST" class="form-container">
               @csrf
                 <h3 class="mt-5 ">Hello...</h3>
                 <p class="mb-4 message"><small>Don’t have an account? 
@@ -56,7 +56,7 @@
                   <p class="h4 text-center mb-3">Login Now</p>
                 <p class="text-center mb-4">Please enter your details below to continue</p>
                 <div class="form-floating mb-3">
-                  <input type="email" name="email"class="form-control  @error('email')border-danger @enderror" id="email" placeholder="name@example.com">
+                  <input type="email" id="mail" name="email"class="form-control  @error('email')border-danger @enderror" id="email" placeholder="name@example.com">
                   <label for="email">Email address</label>
                 </div>
                 @error('email')
@@ -65,7 +65,7 @@
                 </div>
                 @enderror
                 <div class="form-floating mb-3">
-                  <input type="password" name="password" class="form-control  @error('password')border-danger @enderror" id="password" placeholder="Password">
+                  <input type="password" id="pass" name="password" class="form-control  @error('password')border-danger @enderror" id="password" placeholder="Password">
                   <label for="password" class="form-label">Password</label>
                  <span> <i class="far fa-eye" onclick="myFunction()" style="cursor: pointer;"></i></span>
                 </div>
@@ -79,13 +79,13 @@
                   <label class="form-check-label" for="exampleCheck1">Remember me</label>
                 </div>
                 <div class="d-grid gap-2 mb-3">
-                <button type="submit" class="btn btn-block text-white" style="background: linear-gradient(35deg, #3432bb,rgba(119, 119, 255, 0.8));">Log in</button>
+                <button type="submit" class="btn btn-block text-white" id="enter" style="background: linear-gradient(35deg, #3432bb,rgba(119, 119, 255, 0.8));">Log in</button>
                 </div>
                 <small><p class="text-center"><a href="#" style="text-decoration:none">Forgot Password </a></p></small>
             </form>
             </div>
             <div class="mt-2 container" >
-                <form action="{{route('register')}}" class="form-container" method="POST" style="display: none;">
+                <form action="" class="form-container" method="POST" style="display: none;">
                   @csrf
                 <h3 class="mt-3 ">Welcome...</h3>
                 <p class="mb-3 message"><small>Already have an account?
@@ -143,7 +143,7 @@
                   <input type="password" name="password_confirmation" class="form-control @error('name')border-danger @enderror" id="password_confirmation" placeholder="Repeat Password">
                   <label for="password_confirmation" class="form-label">Confirm password
                     </label>
-                    <span> <i class="far fa-eye" onclick="myfunctio()" style="cursor: pointer;"></i></span>
+                    <span> <i class="far fa-eye" style="cursor: pointer;"></i></span>
                 </div>
                 <div class="d-grid gap-2 mb-2">
                 <button type="submit" class="btn btn-block text-white"style="background: linear-gradient(35deg, #3432bb,rgba(119, 119, 255, 0.8));">Sign up</button>
@@ -157,8 +157,10 @@
   </div>
   
 
-
-  <script src="./bootstrap-5.1.3-dist/js/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/04a07a4223.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+  <script src="{{asset("assets/bootstrap-5.1.3-dist/js/bootstrap.min.js")}}"></script>
+  <script src="/assets/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
   <script src="/js/app.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
@@ -187,9 +189,35 @@
    }
  }
  </script>
-        <script>
-            $('.message a').click(function(){
-                $('form').animate({height:"toggle",opacity:"toggle"}, "slow");
-            });
-        </script>
+  <script>
+      $('.message a').click(function(){
+          $('form').animate({height:"toggle",opacity:"toggle"}, "slow");
+      });
+
+      const enterEl = document.getElementById('enter');
+        enterEl.addEventListener('click',()=>{
+          const mail = document.getElementById('mail').value
+          const pass = document.getElementById('pass').value
+          e.preventDefault()
+          console.log(mail)
+          $.ajax({
+            type:"POST",
+            url: "userlogin",
+            datatype: "application/json",
+            data: {email:mail, password:pass},
+            headers: {
+                  "X-CSRF-TOKEN": $('meta[name="csrf-	token"]').attr("content"),
+                  },
+            success: function(response){
+            console.log(response)
+            }
+          })
+        })
+        $("#enter").click(e){
+          e.preventDefault()
+          const mail = document.getElementById('mail').value
+          const pass = document.getElementById('pass').value
+          alert(mail, pass)
+        }
+  </script>
 @endsection
