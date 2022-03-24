@@ -67,7 +67,7 @@
                 <div class="form-floating mb-3">
                   <input type="password" id="pass" name="password" class="form-control  @error('password')border-danger @enderror" id="password" placeholder="Password">
                   <label for="password" class="form-label">Password</label>
-                 <span> <i class="far fa-eye" onclick="myFunction()" style="cursor: pointer;"></i></span>
+                 {{-- <span> <i class="far fa-eye" onclick="myFunction()" style="cursor: pointer;"></i></span> --}}
                 </div>
                 @error('password')
                 <div class="text-danger text-sm mt-1">
@@ -157,13 +157,16 @@
   </div>
   
 
-  <script src="https://kit.fontawesome.com/04a07a4223.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  {{-- <script src="https://kit.fontawesome.com/04a07a4223.js" crossorigin="anonymous"></script> --}}
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
   <script src="{{asset("assets/bootstrap-5.1.3-dist/js/bootstrap.min.js")}}"></script>
-  <script src="/assets/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+  {{-- <script src="/assets/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script> --}}
   <script src="/js/app.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
+  <script>
+    $('.message a').click(function(){
+      $('form').animate({height:"toggle",opacity:"toggle"}, "slow");
+  });
    function myFunction() {
      var x = document.getElementById("password");
        if (x.type === "password") {
@@ -188,36 +191,30 @@
      x.type = "password";
    }
  }
+const enterEl = document.getElementById('enter');
+  enterEl.addEventListener('click',()=>{
+    const mail = document.getElementById('mail').value
+    const pass = document.getElementById('pass').value
+    e.preventDefault()
+    console.log(mail)
+    $.ajax({
+      type:"POST",
+      url: "userlogin",
+      datatype: "application/json",
+      data: {email:mail, password:pass},
+      headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-	token"]').attr("content"),
+            },
+      success: function(response){
+      console.log(response)
+      }
+    })
+  })
+  $("#enter").click(e){
+    e.preventDefault()
+    const mail = document.getElementById('mail').value
+    const pass = document.getElementById('pass').value
+    alert(mail, pass)
+  } 
  </script>
-  <script>
-      $('.message a').click(function(){
-          $('form').animate({height:"toggle",opacity:"toggle"}, "slow");
-      });
-
-      const enterEl = document.getElementById('enter');
-        enterEl.addEventListener('click',()=>{
-          const mail = document.getElementById('mail').value
-          const pass = document.getElementById('pass').value
-          e.preventDefault()
-          console.log(mail)
-          $.ajax({
-            type:"POST",
-            url: "userlogin",
-            datatype: "application/json",
-            data: {email:mail, password:pass},
-            headers: {
-                  "X-CSRF-TOKEN": $('meta[name="csrf-	token"]').attr("content"),
-                  },
-            success: function(response){
-            console.log(response)
-            }
-          })
-        })
-        $("#enter").click(e){
-          e.preventDefault()
-          const mail = document.getElementById('mail').value
-          const pass = document.getElementById('pass').value
-          alert(mail, pass)
-        }
-  </script>
 @endsection
