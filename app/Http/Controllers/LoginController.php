@@ -10,6 +10,10 @@ use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware(['guest']);
+    }
     public function index(){
         return view('auth.login');
     }
@@ -25,7 +29,7 @@ class LoginController extends Controller
 
        return redirect()->route('home');
     }
-    public function user_login(Request $request){
-        return $request;
-    }
+    // public function user_login(Request $request){
+    //     return $request;
+    // }
 }

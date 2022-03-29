@@ -48,11 +48,11 @@
                  {{session('status')}}
                </div>
               @endif
-            <form action="" id="loginform" method="POST" class="form-container">
+            <form action="{{route('login')}}" id="loginform" method="POST" class="form-container">
               @csrf
                 <h3 class="mt-5 ">Hello...</h3>
                 <p class="mb-4 message"><small>Don’t have an account? 
-                  <a href="#" class=" ms-2"  style="text-decoration: none;">Register</a></small></p>
+                  <a href="#" class=" ms-2"  style="text-decoration: none;" id="register">Register</a></small></p>
                   <p class="h4 text-center mb-3">Login Now</p>
                 <p class="text-center mb-4">Please enter your details below to continue</p>
                 <div class="form-floating mb-3">
@@ -85,7 +85,7 @@
             </form>
             </div>
             <div class="mt-2 container" >
-                <form action="" class="form-container" method="POST" style="display: none;">
+                <form action="{{route('register')}}" class="form-container" method="POST" style="display: none;">
                   @csrf
                 <h3 class="mt-3 ">Welcome...</h3>
                 <p class="mb-3 message"><small>Already have an account?
@@ -165,7 +165,7 @@
   <script src="/js/app.js"></script>
   <script>
     $('.message a').click(function(){
-      $('form').animate({height:"toggle",opacity:"toggle"}, "slow");
+      $('form').animate({height:"toggle",opacity:"toggle"}, "fast");
   });
    function myFunction() {
      var x = document.getElementById("password");
@@ -191,30 +191,32 @@
      x.type = "password";
    }
  }
-const enterEl = document.getElementById('enter');
-  enterEl.addEventListener('click',()=>{
-    const mail = document.getElementById('mail').value
-    const pass = document.getElementById('pass').value
-    e.preventDefault()
-    console.log(mail)
-    $.ajax({
-      type:"POST",
-      url: "userlogin",
-      datatype: "application/json",
-      data: {email:mail, password:pass},
-      headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-	token"]').attr("content"),
-            },
-      success: function(response){
-      console.log(response)
-      }
-    })
-  })
-  $("#enter").click(e){
-    e.preventDefault()
-    const mail = document.getElementById('mail').value
-    const pass = document.getElementById('pass').value
-    alert(mail, pass)
-  } 
+// const enterEl = document.getElementById('enter');
+//   enterEl.addEventListener('click',()=>{
+//     const mail = document.getElementById('mail').value
+//     const pass = document.getElementById('pass').value
+//     e.preventDefault()
+//     console.log(mail)
+//     $.ajax({
+//       type:"POST",
+//       url: "userlogin",
+//       datatype: "application/json",
+//       data: {email:mail, password:pass},
+//       headers: {
+//             "X-CSRF-TOKEN": $('meta[name="csrf-	token"]').attr("content"),
+//             },
+//       success: function(response){
+//       console.log(response)
+//       }
+//     })
+//   })
+//   $("#enter").click(e){
+//     e.preventDefault()
+//     const mail = document.getElementById('mail').value
+//     const pass = document.getElementById('pass').value
+//     alert(mail, pass)
+//   } 
+
+  
  </script>
 @endsection

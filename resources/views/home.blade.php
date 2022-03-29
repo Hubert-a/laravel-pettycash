@@ -35,7 +35,7 @@
 
                         <div style="font-family: Georgia, 'Times New Roman', Times, serif;">
                             <h4>Your Balance</h4>
-                            <p class="h5 text-uppercase">{{auth()user()->topups()->topup}}</p>
+                            {{-- <p class="h5 text-uppercase">{{auth()user()->topups()->topup}}</p> --}}
                         </div>
                         <div class="mt-auto mb-1">
                             <i class="refresh fas fa-sync-alt"></i>
